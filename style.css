@@ -1,4 +1,23 @@
 body {
-  font-family: sans-serif;
-  margin: 2rem;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  max-width: 500px;
+}
+
+input, select {
+  padding: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+#errorMsg {
+  color: red;
+}
+
+li {
+  margin-bottom: 8px;
 }
