@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>PocketLedger</title>
-<link rel="stylesheet" href="style.css">
+  <title>PocketLedger</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>PocketLedger</h1>
-<script src="script.js"></script>
+  <h1>PocketLedger</h1>
+  <p>Keep track of what you spend.</p>
+
+  <h2>Add Expense</h2>
+  <form id="expenseForm">
+    <label>Amount ($):</label><br>
+    <input type="number" id="amount" step="0.01"><br><br>
+
+    <label>Category:</label><br>
+    <select id="category">
+      <option>Food</option>
+      <option>Transportation</option>
+      <option>Entertainment</option>
+      <option>Utilities</option>
+      <option>Other</option>
+    </select><br><br>
+
+    <label>Date:</label><br>
+    <input type="date" id="date"><br><br>
+
+    <label>Description:</label><br>
+    <input type="text" id="description"><br><br>
+
+    <button type="submit">Add Expense</button>
+    <p id="errorMsg"></p>
+  </form>
+
+  <h2>My Expenses</h2>
+  <ul id="expenseList"></ul>
+
+  <script src="script.js"></script>
 </body>
 </html>
