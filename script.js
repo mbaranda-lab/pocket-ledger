@@ -38,7 +38,19 @@ function showExpenses() {
     var item = document.createElement("li");
     item.textContent = "$" + expenses[i].amount.toFixed(2) + " - " +
       expenses[i].category + " - " + expenses[i].date + " - " +
-      expenses[i].description;
+      expenses[i].description + " ";
+
+    // delete button for this expense
+    var deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.setAttribute("data-index", i);
+    deleteBtn.addEventListener("click", function () {
+      var index = parseInt(this.getAttribute("data-index"));
+      deleteExpense(storage, index);
+      showExpenses();
+    });
+
+    item.appendChild(deleteBtn);
     expenseList.appendChild(item);
   }
 }
