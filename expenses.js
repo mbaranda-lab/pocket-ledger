@@ -28,11 +28,24 @@ function addExpense(storage, expense) {
   storage.save(expenses);
 }
 
+// delete the expense at this position in the list
+// returns true if it worked, false if the position doesn't exist
+function deleteExpense(storage, index) {
+  var expenses = storage.load();
+  if (isNaN(index) || index < 0 || index >= expenses.length) {
+    return false;
+  }
+  expenses.splice(index, 1);
+  storage.save(expenses);
+  return true;
+}
+
 // this lets the tests use the functions (only runs in Node, not the browser)
 if (typeof module !== "undefined") {
   module.exports = {
     validateExpense: validateExpense,
     getExpenses: getExpenses,
-    addExpense: addExpense
+    addExpense: addExpense,
+    deleteExpense: deleteExpense
   };
 }
