@@ -9,6 +9,8 @@ var dateBox = document.getElementById("date");
 var descBox = document.getElementById("description");
 var errorMsg = document.getElementById("errorMsg");
 var expenseList = document.getElementById("expenseList");
+var totalSpent = document.getElementById("totalSpent");
+var categoryTotals = document.getElementById("categoryTotals");
 
 // this storage uses the browser's localStorage
 var storage = {
@@ -24,8 +26,30 @@ var storage = {
   }
 };
 
+// show the total spent and the total for each category
+function showTotals() {
+  totalSpent.textContent = "Total spent: $" + getTotalSpent(storage).toFixed(2);
+
+  var totals = getCategoryTotals(storage);
+  var categories = Object.keys(totals);
+  categoryTotals.innerHTML = "";
+
+  if (categories.length == 0) {
+    categoryTotals.innerHTML = "<li>No totals yet.</li>";
+    return;
+  }
+
+  for (var i = 0; i < categories.length; i++) {
+    var item = document.createElement("li");
+    item.textContent = categories[i] + ": $" + totals[categories[i]].toFixed(2);
+    categoryTotals.appendChild(item);
+  }
+}
+
 // show all the expenses on the page
 function showExpenses() {
+  showTotals();
+
   var expenses = getExpenses(storage);
   expenseList.innerHTML = "";
 

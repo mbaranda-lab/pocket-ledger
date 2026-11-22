@@ -40,12 +40,48 @@ function deleteExpense(storage, index) {
   return true;
 }
 
+// round to 2 decimals so we don't get numbers like 12.300000000000001
+function roundMoney(number) {
+  return Math.round(number * 100) / 100;
+}
+
+// add up the amounts for each category
+// example result: { Food: 12.5, Utilities: 40 }
+function getCategoryTotals(storage) {
+  var expenses = storage.load();
+  var totals = {};
+
+  for (var i = 0; i < expenses.length; i++) {
+    var category = expenses[i].category;
+    if (totals[category] == undefined) {
+      totals[category] = 0;
+    }
+    totals[category] = roundMoney(totals[category] + expenses[i].amount);
+  }
+
+  return totals;
+}
+
+// add up everything the user spent
+function getTotalSpent(storage) {
+  var expenses = storage.load();
+  var total = 0;
+
+  for (var i = 0; i < expenses.length; i++) {
+    total = total + expenses[i].amount;
+  }
+
+  return roundMoney(total);
+}
+
 // this lets the tests use the functions (only runs in Node, not the browser)
 if (typeof module !== "undefined") {
   module.exports = {
     validateExpense: validateExpense,
     getExpenses: getExpenses,
     addExpense: addExpense,
-    deleteExpense: deleteExpense
+    deleteExpense: deleteExpense,
+    getCategoryTotals: getCategoryTotals,
+    getTotalSpent: getTotalSpent
   };
 }
