@@ -1,0 +1,24 @@
+{
+  "name": "pocket-ledger",
+  "version": "1.0.0",
+  "description": "A personal expense tracker I'm building for CS-319 (Fundamentals of Software Engineering).\r Name: Maitri",
+  "main": "expenses.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbaranda-lab/pocket-ledger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mbaranda-lab/pocket-ledger/issues"
+  },
+  "homepage": "https://github.com/mbaranda-lab/pocket-ledger#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
